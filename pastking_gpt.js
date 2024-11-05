@@ -153,7 +153,7 @@ function ChucklePostAI(AI_option) {
       const title = document.title;
       
       try {
-        const response = await fetch('https://notion.kings.us.kg//api/summary?token=notionai', {
+        const response = await fetch('https://notion.kings.us.kg/api/summary?token=notionai', {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
