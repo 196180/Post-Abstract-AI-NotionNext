@@ -157,7 +157,6 @@ function ChucklePostAI(AI_option) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer notionai" // 使用你的实际TOKEN替换
           },
           body: JSON.stringify({
             content: content
