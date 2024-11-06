@@ -148,32 +148,33 @@ function ChucklePostAI(AI_option) {
       }
     },
 
-    fetchAISummary: async function(content) {
-      const url = window.location.href;
-      const title = document.title;
-      
-      try {
-        const response = await fetch('https://notion.kings.us.kg/api/summary?token=notionai', {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            content: content
-          })
-        });
+fetchAISummary: async function(content) {
+  const url = 'https://notion.kings.us.kg/api/summary?token=notionai'; // 替换成你的实际接口URL和TOKEN
 
-        if (response.ok) {
-          const data = await response.json();
-          return data.summary;
-        } else {
-          throw new Error('Response not ok');
-        }
-      } catch (error) {
-        console.error('ChucklePostAI：请求失败', error);
-        return '获取文章摘要失败，请稍后再试。';
-      }
-    },
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer notionai" // 使用你的实际TOKEN替换
+      },
+      body: JSON.stringify({
+        content: content
+      })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.summary;
+    } else {
+      throw new Error('Response not ok');
+    }
+  } catch (error) {
+    console.error('ChucklePostAI：请求失败', error);
+    return '获取文章摘要失败，请稍后再试。';
+  }
+},
+
 
     aiShowAnimation: function(text) {
       const element = document.querySelector(".ai-explanation");
